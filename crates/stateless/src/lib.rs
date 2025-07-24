@@ -47,6 +47,10 @@ pub use validation::stateless_validation_with_trie;
 pub mod validation;
 pub(crate) mod witness_db;
 
+
+// Implementation of stateless execution
+pub mod execute;
+
 #[doc(inline)]
 pub use alloy_rpc_types_debug::ExecutionWitness;
 

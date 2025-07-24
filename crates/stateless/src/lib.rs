@@ -60,6 +60,9 @@ pub(crate) mod witness_db;
 /// etc, then this may not be needed, as you can just do ChainSpec::mainnet() in the guest program
 pub mod fork_spec;
 
+// Implementation of stateless execution
+pub mod execute;
+
 #[doc(inline)]
 pub use alloy_rpc_types_debug::ExecutionWitness;
 

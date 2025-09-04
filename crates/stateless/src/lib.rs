@@ -42,12 +42,16 @@ use alloy_genesis::ChainConfig;
 #[doc(inline)]
 pub use trie::StatelessTrie;
 #[doc(inline)]
+pub use execution::stateless_execution_with_trie;
+#[doc(inline)]
 pub use validation::stateless_validation_with_trie;
 
 pub use alloy_genesis::Genesis;
 
 /// Implementation of stateless validation
 pub mod validation;
+/// Implementation of stateless execution
+pub mod execution;
 pub(crate) mod witness_db;
 
 #[doc(inline)]

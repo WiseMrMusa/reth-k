@@ -35,6 +35,26 @@
 
 extern crate alloc;
 
+/// Macro to track cycle counts for zkVM execution.
+/// In zkVM environments, this logs start/end markers for cycle counting.
+/// In non-zkVM environments, it simply executes the body.
+macro_rules! track_cycles {
+    ($name:expr, $body:expr) => {{
+        #[cfg(target_os = "zkvm")]
+        {
+            tracing::info!("cycle-tracker-report-start: {}", $name);
+            let result = $body;
+            tracing::info!("cycle-tracker-report-end: {}", $name);
+            result
+        }
+
+        #[cfg(not(target_os = "zkvm"))]
+        $body
+    }};
+}
+
+pub(crate) use track_cycles;
+
 mod recover_block;
 /// Sparse trie implementation for stateless validation
 pub mod trie;
@@ -48,7 +68,11 @@ pub use trie::StatelessTrie;
 pub use validation::stateless_validation;
 #[doc(inline)]
 pub use validation::stateless_validation_with_trie;
+#[doc(inline)]
+pub use execution::stateless_execution_with_trie;
 
+/// Implementation of stateless execution
+pub mod execution;
 /// Implementation of stateless validation
 pub mod validation;
 pub(crate) mod witness_db;

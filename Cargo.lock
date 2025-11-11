@@ -10402,6 +10402,7 @@ dependencies = [
  "serde",
  "serde_with",
  "thiserror 2.0.17",
+ "tracing",
 ]
 
 [[package]]

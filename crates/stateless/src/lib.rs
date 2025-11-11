@@ -46,9 +46,13 @@ pub use recover_block::UncompressedPublicKey;
 pub use trie::StatelessTrie;
 #[doc(inline)]
 pub use validation::stateless_validation_with_trie;
+#[doc(inline)]
+pub use execution::stateless_execution_with_trie;
 
 pub use alloy_genesis::Genesis;
 
+/// Implementation of stateless execution
+pub mod execution;
 /// Implementation of stateless validation
 pub mod validation;
 pub(crate) mod witness_db;
